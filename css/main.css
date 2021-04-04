@@ -72,3 +72,7 @@ body {
 .showItem {
   display: block;
 }
+.coloredREd {
+  background-color: #d62828;
+  color: #d62828;
+}

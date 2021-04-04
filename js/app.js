@@ -3,12 +3,17 @@ let gotAddButton = document.querySelector('.input-group-append');
 let items = document.querySelector('.item-list')
 //event on click
 gotAddButton.addEventListener('click', doThisToDo);
+ document.addEventListener('click', functionsTodo);
+
+//variable for making id
 let idNumberForTodoDiv = 0;
 
 function doThisToDo() {
   let todoText =  inputForm.value;
 let toDo = document.createElement("div");
-
+//make id + increment
+toDo.id = 'id' + idNumberForTodoDiv;
+idNumberForTodoDiv++;
  let x = document.createElement("h5");
  x.innerHTML = todoText;
 toDo.insertAdjacentElement('afterbegin', x );
@@ -42,6 +47,21 @@ buttonsDiv.insertAdjacentElement('beforeend', buttonDone);
 toDo.classList.add('item');
 
 items.append(toDo);
+}
+//delete toDo function
+function functionsTodo(event) {
+  console.log('inside functionsTodo');
+  if ( event.target.classList == 'delete-item') {
+    event.target.parentNode.parentNode.remove();
+  }
+  if ( event.target.parentNode.classList == 'complete-item') {
+    console.log('complete');
+    //doesnt work here
+     event.target.parentNode.parentNode.closest("h5").classList.add('coloredREd');
+     
+    
+  }
+
 }
 
 // //add an eventListener to the from
