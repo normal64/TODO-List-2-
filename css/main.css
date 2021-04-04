@@ -29,6 +29,15 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.buttonsDiv {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: none;
+  }
+  .buttonsDiv a {
+    margin-left: 21%;
+  }
+
 .item-icon {
   font-size: 1.2rem;
   cursor: pointer;
@@ -47,6 +56,8 @@ body {
 }
 .delete-item {
   color: var(--mainRed);
+  font-size: 14px;
+  /* content:  '&#x2715'; */
 }
 .delete-item:hover {
   color: var(--mainRed);

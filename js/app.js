@@ -1,12 +1,48 @@
 let inputForm = document.querySelector('#itemInput');
 let gotAddButton = document.querySelector('.input-group-append');
 let items = document.querySelector('.item-list')
-console.log(inputForm.value);
-console.log(gotAddButton.innerHTML);
+//event on click
+gotAddButton.addEventListener('click', doThisToDo);
+let idNumberForTodoDiv = 0;
 
-let x = document.createElement("p");
-x.innerHTML = 'pizdaaaaaaaa';
-items.appendChild(x);
+function doThisToDo() {
+  let todoText =  inputForm.value;
+let toDo = document.createElement("div");
+
+ let x = document.createElement("h5");
+ x.innerHTML = todoText;
+toDo.insertAdjacentElement('afterbegin', x );
+
+//div with buttons
+let buttonsDiv = document.createElement("div");
+buttonsDiv.classList.add('buttonsDiv');
+//delete button
+let buttonDelete = document.createElement('a');
+buttonDelete.href = '#';
+buttonDelete.innerHTML = "&#x2715";
+buttonDelete.classList.add('delete-item');
+buttonsDiv.insertAdjacentElement('afterbegin', buttonDelete);
+toDo.insertAdjacentElement('beforeend', buttonsDiv );
+
+//edit button
+let buttonEdit = document.createElement('a');
+buttonEdit.href = '#';
+buttonEdit.insertAdjacentHTML('afterbegin', '<img width = 13px src= "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png ">');
+buttonEdit.classList.add('edit-item');
+buttonsDiv.insertAdjacentElement('beforeend', buttonEdit);
+
+//add button Done
+let buttonDone = document.createElement('a');
+buttonDone.href = '#';
+ buttonDone.insertAdjacentHTML('afterbegin', '<img width = 13px src= "https://cdn4.iconfinder.com/data/icons/colicon/24/checkmark_done_complete-512.png">');
+buttonDone.classList.add('complete-item');
+buttonsDiv.insertAdjacentElement('beforeend', buttonDone);
+
+
+toDo.classList.add('item');
+
+items.append(toDo);
+}
 
 // //add an eventListener to the from
 // const form = document.querySelector('#itemForm'); // select form
