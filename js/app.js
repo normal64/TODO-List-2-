@@ -8,7 +8,8 @@ gotAddButton.addEventListener('click', doThisToDo);
 //variable for making id
 let idNumberForTodoDiv = 0;
 
-function doThisToDo() {
+function doThisToDo(event) {
+  event.preventDefault();
   let todoText =  inputForm.value;
 let toDo = document.createElement("div");
 //make id + increment
@@ -50,16 +51,33 @@ items.append(toDo);
 }
 //delete toDo function
 function functionsTodo(event) {
-  console.log('inside functionsTodo');
+  let itDivId = event.target.parentNode.parentNode.parentNode.id;
   if ( event.target.classList == 'delete-item') {
     event.target.parentNode.parentNode.remove();
   }
   if ( event.target.parentNode.classList == 'complete-item') {
     console.log('complete');
-    //doesnt work here
-     event.target.parentNode.parentNode.closest("h5").classList.add('coloredREd');
-     
-    
+     let hot = event.target.parentNode.parentNode.parentNode;
+     let myTag = hot.querySelector("h5");
+     myTag.classList.add('completed');
+  }
+  if ( event.target.parentNode.classList == 'edit-item') {
+     let userChangeToDo =  window.prompt("WHat do u want" , "nafin");
+     switch(userChangeToDo) {
+        case '':
+        window.alert('Enter a todo or get out');
+        break;
+
+        default:
+          
+          let searchById = document.querySelector( '#' + itDivId +'  ' );
+          let currentTodoText = searchById.querySelector('h5');
+          currentTodoText.innerHTML  = userChangeToDo;
+
+     }
+
+
+
   }
 
 }
